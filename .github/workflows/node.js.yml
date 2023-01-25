@@ -21,7 +21,7 @@ jobs:
       with:
         node-version: 16
         cache: 'npm'
-        cache-depandency-path: /home/runner/work/feriwinter23/feriwinter23/measurements_frontend/measurments/package-lock.json
+        cache-depandency-path: /home/runner/work/feriwinter23/measurements_frontend/measurments/package-lock.json
     - run: npm ci
       working-directory: measurements_frontend/measurments/
     - run: npm run build --if-present
