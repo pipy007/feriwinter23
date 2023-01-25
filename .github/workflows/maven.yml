@@ -14,6 +14,10 @@ on:
   pull_request:
     branches: [ "main" ]
 
+env:
+ GITHUB_TOKEN: ${{ github.token }}
+ IMAGE_NAME: winter23-measurements
+
 jobs:
   build:
 
@@ -33,5 +37,11 @@ jobs:
       
     - name: Run test
       run: mvn -B test --file pom.xml
+      working-directory: measurements_backend
+    - name: QA - Sonar
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      run: mvn -DskipTests -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=beranic_winter23QA -Dsonar.qualitygate.wait=true
       working-directory: measurements_backend
 
