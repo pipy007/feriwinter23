@@ -16,7 +16,7 @@ on:
 
 env:
  GITHUB_TOKEN: ${{ github.token }}
- IMAGE_NAME: winter23-measurements
+ IMAGE_NAME: feriwinter23
 
 jobs:
   build:
